@@ -1,17 +1,15 @@
-# Solana Wallets Vue
+# Solana Vue Wallets
 
 Integrates Solana wallets in your Vue 3 applications.
 
-⚡️ [View demo](https://solana-wallets-vue-demo.netlify.app/) / [Browse demo code](./example)
-
-<img width="1230" alt="solana-wallets-vue" src="https://user-images.githubusercontent.com/3642397/152684955-079b4505-a7bb-4be7-976b-a0a5a59acf92.png">
+[Browse demo code](./example)
 
 ## Installation
 
-To get started, you'll need to install the `solana-wallets-vue` npm package as well as the wallets adapters provided by Solana.
+To get started, you'll need to install the `solana-vue-wallets` npm package as well as the wallets adapters provided by Solana.
 
 ```shell
-npm install solana-wallets-vue @solana/wallet-adapter-wallets
+npm install solana-vue-wallets @solana/wallet-adapter-wallets
 ```
 
 ## Setup
@@ -21,10 +19,10 @@ Next, you can install Solana Wallets Vue as a plugin like so.
 ```js
 import { createApp } from 'vue';
 import App from './App.vue';
-import SolanaWallets from 'solana-wallets-vue';
+import SolanaWallets from 'solana-vue-wallets';
 
 // You can either import the default styles or create your own.
-import 'solana-wallets-vue/styles.css';
+import 'solana-vue-wallets/styles.css';
 
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base"
 
@@ -53,7 +51,7 @@ This will initialise the wallet store and create a new `$wallet` global property
 Note that you can also initialise the wallet store manually using the `initWallet` method like so.
 
 ```js
-import { initWallet } from 'solana-wallets-vue';
+import { initWallet } from 'solana-vue-wallets';
 initWallet(walletOptions);
 ```
 
@@ -61,7 +59,7 @@ Finally, import and render the `WalletMultiButton` component to allow users to s
 
 ```vue
 <script setup>
-import { WalletMultiButton } from 'solana-wallets-vue'
+import { WalletMultiButton } from 'solana-vue-wallets'
 </script>
 
 <template>
@@ -82,7 +80,7 @@ You can then call `useWallet()` at any time to access the wallet store — or ac
 Here's an example of a function that sends one lamport to a random address.
 
 ```js
-import { useWallet } from 'solana-wallets-vue';
+import { useWallet } from 'solana-vue-wallets';
 import { Connection, clusterApiUrl, Keypair, SystemProgram, Transaction } from '@solana/web3.js';
 
 export const sendOneLamportToRandomAddress = () => {
@@ -109,7 +107,7 @@ If you're using Anchor, then you might want to define your own store that encaps
 
 ```js
 import { computed } from 'vue'
-import { useAnchorWallet } from 'solana-wallets-vue'
+import { useAnchorWallet } from 'solana-vue-wallets'
 import { Connection, clusterApiUrl, PublicKey } from '@solana/web3.js'
 import { AnchorProvider, Program } from '@project-serum/anchor'
 import idl from '@/idl.json'
@@ -184,8 +182,8 @@ The table below shows all the properties and methods you can get from `useWallet
 1. Create a new plugin, ex. `plugins/solana.ts`
 
 ```ts
-import 'solana-wallets-vue/styles.css'
-import SolanaWallets from 'solana-wallets-vue'
+import 'solana-vue-wallets/styles.css'
+import SolanaWallets from 'solana-vue-wallets'
 import { WalletAdapterNetwork } from '@solana/wallet-adapter-base'
 import {
   PhantomWalletAdapter,
@@ -236,7 +234,7 @@ export default defineNuxtConfig({
 
 ```vue
 <script lang="ts" setup>
-import { WalletMultiButton } from 'solana-wallets-vue'
+import { WalletMultiButton } from 'solana-vue-wallets'
 </script>
 
 <template>
