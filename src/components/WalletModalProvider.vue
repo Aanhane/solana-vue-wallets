@@ -16,7 +16,7 @@ export default defineComponent({
   },
   setup(props, { slots }) {
     const { featured, container, logo, dark } = toRefs(props);
-    const modalPanel = ref<HTMLElement | null>(null);
+    const modalPanel = ref<HTMLElement>();
     const modalOpened = ref(false);
     const openModal = () => modalOpened.value = true;
     const closeModal = () => modalOpened.value = false;
