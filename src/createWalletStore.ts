@@ -17,7 +17,7 @@ import type {
 } from "@solana/web3.js";
 import { computed, Ref, ref, shallowRef, watch, watchEffect } from "vue";
 import { WalletNotSelectedError } from "./errors";
-import { useLocalStorage } from "@vueuse/core";
+import { useStorage } from "@vueuse/core";
 
 export type Wallet = Adapter;
 
@@ -69,10 +69,8 @@ export const createWalletStore = ({
   // Mutable values.
   const wallets: Ref<Wallet[]> = shallowRef(initialWallets);
   const autoConnect = ref(initialAutoConnect);
-  const name: Ref<WalletName | null> = useLocalStorage<WalletName>(
-    localStorageKey,
-    null
-  );
+  const nameInStorage = useStorage<WalletName>(localStorageKey, null);
+  const name = ref<string | null>(nameInStorage.value);
   const wallet = shallowRef<Wallet | null>(null);
   const publicKey = ref<PublicKey | null>(null);
   const readyState = ref<WalletReadyState>(WalletReadyState.NotDetected);
